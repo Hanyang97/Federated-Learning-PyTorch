@@ -14,6 +14,9 @@ from options import args_parser
 from update import test_inference
 from models import MLP, CNNMnist, CNNFashion_Mnist, CNNCifar
 
+import os
+os.chdir('./src')
+print(os.getcwd())
 
 if __name__ == '__main__':
     args = args_parser()
@@ -84,6 +87,8 @@ if __name__ == '__main__':
         print('\nTrain loss:', loss_avg)
         epoch_loss.append(loss_avg)
 
+    print(os.getcwd())
+
     # Plot loss
     plt.figure()
     plt.plot(range(len(epoch_loss)), epoch_loss)
@@ -95,4 +100,4 @@ if __name__ == '__main__':
     # testing
     test_acc, test_loss = test_inference(args, global_model, test_dataset)
     print('Test on', len(test_dataset), 'samples')
-    print("Test Accuracy: {:.2f}%".format(100*test_acc))
+#     print("Test Accuracy: {:.2f}%".format(100*test_acc))
